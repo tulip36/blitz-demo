@@ -4,6 +4,7 @@ import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 import logout from "app/auth/mutations/logout"
 import { GetStaticProps } from "next"
+import { Columns, Box } from "bumbag"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -72,6 +73,28 @@ const Home = ({ content }) => {
             <UserInfo />
           </Suspense>
         </div>
+        <Columns>
+          <Columns.Column>
+            <Box backgroundColor="whitesmoke" padding="0.5rem">
+              First column
+            </Box>
+          </Columns.Column>
+          <Columns.Column>
+            <Box backgroundColor="whitesmoke" padding="0.5rem">
+              Second column
+            </Box>
+          </Columns.Column>
+          <Columns.Column>
+            <Box backgroundColor="whitesmoke" padding="0.5rem">
+              Third column
+            </Box>
+          </Columns.Column>
+          <Columns.Column>
+            <Box backgroundColor="whitesmoke" padding="0.5rem">
+              Fourth column
+            </Box>
+          </Columns.Column>
+        </Columns>
       </main>
     </div>
   )

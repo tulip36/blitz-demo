@@ -12,18 +12,22 @@ import { Suspense } from "react"
 
 import "app/core/styles/index.css"
 
+import { Provider as BumbagProvider } from "bumbag"
+
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
-    <Suspense fallback="Loading...">
-      <ErrorBoundary
-        FallbackComponent={RootErrorFallback}
-        onReset={useQueryErrorResetBoundary().reset}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </ErrorBoundary>
-    </Suspense>
+    <BumbagProvider isSSR>
+      <Suspense fallback="Loading...">
+        <ErrorBoundary
+          FallbackComponent={RootErrorFallback}
+          onReset={useQueryErrorResetBoundary().reset}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </ErrorBoundary>
+      </Suspense>
+    </BumbagProvider>
   )
 }
 
